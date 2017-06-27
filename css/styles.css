@@ -1,0 +1,106 @@
+.default .cell > div {
+  display: none;
+}
+
+.alamo .cell {
+  width: 6em;
+  height: 3em;
+}
+
+.savory .cell {
+  height: 2em;
+}
+
+.plumes .cell {
+  width: 3em;
+  height: 3em;
+}
+
+.tangent .cell > div:last-of-type {
+  bottom: 0em;
+}
+
+.tangent .cell > div:first-of-type {
+  top: 1em;
+}
+
+.zebra .cell > div {
+  width: 25em;
+}
+
+.print .cell > div {
+  width: 30em;
+  height: 28em;
+}
+
+.sinew .cell > div{
+  width: 23em;
+  height: 33em;
+}
+
+.maui-vert .cell > div:last-of-type {
+    bottom: -3em;
+}
+
+.maui-vert .cell > div:first-of-type {
+    top: -3em;
+}
+
+.maui-vert .cell > div {
+    height: 6em;
+}
+
+.movement .cell > div:last-of-type {
+    bottom: -4em;
+}
+
+.movement .cell > div:first-of-type {
+top: 0;
+}
+
+.pitri .cell > div:first-of-type {
+    top: 1em;
+    left: 1em;
+}
+
+.pitri .cell > div:last-of-type {
+    bottom: -5em;
+    right: -2em;
+}
+
+.pitri .cell > div {
+	width: 2rem;
+	height: 2rem;
+}
+
+
+.rejoinder .cell.rot > div:last-of-type {
+    right: auto;
+    left: 0em;
+    top: 0rem;
+}
+
+.rejoinder .cell > div:last-of-type {
+    bottom: 0em;
+    right: 2em;
+    border-radius: 100%;
+}
+
+.rejoinder .cell > div {
+    width: 2em;
+    height: 2em;
+    position: absolute;
+}
+
+.rejoinder .cell.rot > div:first-of-type {
+    left: auto;
+    right: -2em;
+}
+
+.rejoinder .cell > div:first-of-type {
+    top: 0;
+    left: 2rem;
+    border-radius: 100%;
+    height: 4rem;
+    width: 4rem;
+}
