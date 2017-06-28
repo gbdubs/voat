@@ -2,11 +2,15 @@ body {
   margin: 0;
   overflow: hidden;
 }
-
-.row { width: 200%; }
-.grid { position: absolute; }
-.hidden { display: none; }
-
+.row {
+  width: 200%;
+}
+.grid {
+  position: absolute;
+}
+.hidden {
+  display: none;
+}
 .cell {
   width: 4em;
   height: 4em;
@@ -15,48 +19,40 @@ body {
   display: inline-block;
   margin: 0;
 }
-
 .cell > div {
   width: 4em;
   height: 4em;
   position: absolute;
 }
-
 .cell > div:first-of-type {
   top: -2em;
   left: -2em;
   border-radius: 100%;
 }
-
 .cell > div:last-of-type {
-  bottom:  -2em;
-  right:  -2em;
+  bottom: -2em;
+  right: -2em;
   border-radius: 100%;
 }
-
 .cell.rot > div:first-of-type {
   left: auto;
   right: -2em;
 }
-
 .cell.rot > div:last-of-type {
   right: auto;
   left: -2em;
 }
-
 .links {
-    position: absolute;
-    background: white;
-    bottom: 0;
-    padding: .5rem;
+  position: absolute;
+  background: white;
+  bottom: 0;
+  padding: .5rem;
 }
-
 .links a {
-    color: black;
-    margin: 0 .125em;
+  color: black;
+  margin: 0 .125em;
 }
-
 .links > * {
-    margin:0;
-    font-family: sans-serif;
+  margin: 0;
+  font-family: sans-serif;
 }
