@@ -22,17 +22,16 @@ body {
 .cell > div {
   width: 4em;
   height: 4em;
+  border-radius: 100%;
   position: absolute;
 }
 .cell > div:first-of-type {
   top: -2em;
   left: -2em;
-  border-radius: 100%;
 }
 .cell > div:last-of-type {
   bottom: -2em;
   right: -2em;
-  border-radius: 100%;
 }
 .cell.rot > div:first-of-type {
   left: auto;

@@ -1,9 +1,5 @@
 $(function() {
 
-  var grid = $(".grid");
-  var rowTemplate = $(".row.hidden");
-  var cellTemplate = $(".cell.hidden");
-
   var gridHeight = -1;
   var gridWidth = -1;
 
@@ -67,6 +63,10 @@ $(function() {
   }
 
   function createGrid() {
+  	var grid = $(".grid");
+    var rowTemplate = $(".row.hidden");
+    var cellTemplate = $(".cell.hidden");
+
     $(grid).empty().css("top", heightOffset).css("left", widthOffset);
     ELEMS.empty();
 
@@ -77,20 +77,24 @@ $(function() {
     var widthOffset = -1 * cellWidth * Math.random();
     gridHeight = Math.ceil(($(window).height() - heightOffset) / cellHeight);
     gridWidth = Math.ceil(($(window).width() - widthOffset) / cellWidth);
-
+   
+    var rowsToAddToGrid = [];
     for (var i = 0; i < gridHeight; i++) {
       var row = $(rowTemplate).clone().removeClass("hidden");
-      $(grid).append(row);
+      rowsToAddToGrid.push(row);
       ELEMS.newRow();
+      var cellsToAddToRow = [];
       for (var j = 0; j < gridWidth; j++) {
         var cell = $(cellTemplate).clone().removeClass("hidden");
         if (Math.random() > .5) {
           cell.addClass("rot");
         }
-        $(row).append(cell);
+        cellsToAddToRow.push(cell);
         ELEMS.addCell(cell);
       }
+      $(row).append(cellsToAddToRow);
     }
+    $(grid).append(rowsToAddToGrid);
   }
 
   var GROUPS = {
@@ -300,8 +304,25 @@ $(function() {
   };
 
   var COLORS = {
-    readColorBit: function(bit) {
-      return parseInt($(".color-class-" + bit).text());
+    bits: {"r": 0, "g": 1, "b": 2},
+    color1: {},
+    color2: {},  
+    getColor1Bit: function(bit) {
+      if (!this.color1[bit]){
+        this.color1[bit] = parseInt($(".color-class-1").text().split(",")[this.bits[bit]]);
+      }
+      return this.color1[bit];
+    },
+    getColor2Bit: function(bit) {
+      if (!this.color2[bit]){
+        this.color2[bit] = parseInt($(".color-class-2").text().split(",")[this.bits[bit]]);
+      }
+      return this.color2[bit];
+    },
+    bitFromSeed: function(seed, bit) {
+      var a = this.getColor1Bit(bit);
+      var b = this.getColor2Bit(bit);
+      return Math.floor(seed * Math.abs(a - b) + Math.min(a, b));
     },
     randomColor: function() {
       var seed = Math.random();
@@ -309,11 +330,6 @@ $(function() {
         this.bitFromSeed(seed, "g") + ", " +
         this.bitFromSeed(seed, "b") + ")";
     },
-    bitFromSeed: function(seed, bit) {
-      var a = this.readColorBit("1-" + bit);
-      var b = this.readColorBit("2-" + bit);
-      return Math.floor(seed * Math.abs(a - b) + Math.min(a, b));
-    }
   };
 
   function render() {

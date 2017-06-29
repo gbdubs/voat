@@ -82,3 +82,59 @@
   height: 4rem;
   width: 4rem;
 }
+.boxy .cell > div {
+    width: 33em;
+    height: 35em;
+}
+.diamond .cell > div {
+  width: 60em;
+  height: 20em;
+}
+.boxish .cell > div {
+  border-radius: 1rem;
+}
+.diva .cell {
+  border-radius: 2rem;
+}
+.sour .cell > div {
+  width: 2em;
+  height: 6em;
+}
+.sour .cell > div:first-of-type {
+  top: -3em;
+  left: -1em;
+}
+.sour .cell > div:last-of-type {
+  bottom: -1em;
+  right: -3em;
+  height: 2rem;
+  width: 6rem;
+}
+.sour .cell.rot > div:first-of-type {
+  left: auto;
+  right: -3em;
+  width: 6rem;
+}
+.sour .cell.rot > div:last-of-type {
+  right: auto;
+  left: -1em;
+  width: 2rem;
+}
+.madmen .cell > div {
+  width: 3.5rem;
+  height: 5.5rem;
+  border-radius: 0;
+}
+.madmen .cell {
+  width: 3.5em;
+}
+.sane .cell > div {
+  width: 3rem;
+  height: 5rem;
+  border-radius: 0;
+}
+.sane .cell {
+  width: 3em;
+  height: 4em;
+}
+
