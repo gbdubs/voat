@@ -1,0 +1,44 @@
+body {
+    font-family: sans-serif;
+    margin: 4rem 2rem;
+    text-align: center;
+
+}
+
+p {
+    text-align: left;
+    max-width: 50rem;
+    display: inline-block;
+}
+
+.cell {
+    width: 8rem;
+    height: 8rem;
+    border: .5rem solid black;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+}
+
+.cell > div {
+    border-radius: 100%;
+    width: 8rem;
+    border: .5rem solid black;
+    height: 8rem;
+    position: absolute;
+}
+
+.cell > div:first-of-type {
+    top: -4.75rem;
+    right: -4.75rem
+}
+
+.cell > div:last-of-type {
+    bottom: -4.75rem;
+    left: -4.75rem;
+}
+
+a.start {
+    
+}

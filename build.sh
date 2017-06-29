@@ -27,7 +27,7 @@ for f in data/*.txt; do
   template=${template//COLOR1/$color1};
   template=${template//COLOR2/$color2};
   
-  if [ $fileNum > 1 ]; then
+  if [ "$fileNum" -gt 1 ]; then
     prevFileNum=$((fileNum - 1));
     link="<a href='../$prevFileNum/index.html'><< Previous</a>";
     template=${template//PREVIOUSLINK/$link};
