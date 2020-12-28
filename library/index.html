@@ -54,9 +54,11 @@
  <script>$(document).ready(function () {
       let cursorStr = "";
       let fetching = false;
+      
       const appendToLibraryFromResponse = function (data) {
         fetching = false;
         const parsed = JSON.parse(data);
+        console.log("Returned Cursor = " + cursorStr);
         cursorStr = parsed.CursorStr;
         const patterns = parsed.Patterns;
         for (let i in patterns) {
@@ -86,22 +88,30 @@
         }
       }
  
+      const lookUpMoreLibraryEntries = function() {
+        fetching = true;
+        const payload = JSON.stringify({
+              "CursorStr": cursorStr
+          })
+        console.log("Requesting with Cursor = " + payload)
+        $.ajax({
+          method: "POST",
+          url: "https://us-west3-voat-app-0.cloudfunctions.net/voat-app-list", 
+          body: payload,
+          data: payload,
+          success: appendToLibraryFromResponse
+        });
+      }
     
-      $.get("https://us-west3-voat-app-0.cloudfunctions.net/voat-app-list", appendToLibraryFromResponse);
-      
-      
-      
       $(window).scroll(function() {
         if ($(window).height() - window.innerHeight - $(window).scrollTop() < 500) {
           if (!fetching) {
-            fetching = true;
-            $.get("https://us-west3-voat-app-0.cloudfunctions.net/voat-app-list", 
-            JSON.stringify({
-              "CursorStr": cursorStr
-            }), appendToLibraryFromResponse);
+            lookUpMoreLibraryEntries();
           }
         }
       });
+      
+      lookUpMoreLibraryEntries();
       
     });</script>
 </body>
