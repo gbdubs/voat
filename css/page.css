@@ -1,0 +1,32 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body {
+    margin: 0;
+}
+
+.row {
+    width: 10000%;
+}
+
+.cell {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 5rem;
+  width: 5rem;
+}
+
+.center,
+.corner {
+  display: inline-block;
+  position: absolute;
+  height: 100%; 
+  width: 100%;
+}
+

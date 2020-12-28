@@ -1,0 +1,108 @@
+<html>
+<head>
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="../js/class_editor_controller.js"></script>
+  <script src="../js/colors.js"></script>
+  <script src="../js/editor_controller.js"></script>
+  <script src="../js/editor_visibility.js"></script>
+  <script src="../js/grid.js"></script>
+  <script src="../js/range_style_editor_controller.js"></script>
+  <script src="../js/show_borders.js"></script>
+  <script src="../js/state.js"></script>
+  <script src="../js/style_editor_controller.js"></script>
+  <script src="../js/scoped_style_controller.js"></script>
+  <script src="../js/random.js"></script>
+  <link href="../css/library.css" rel="stylesheet" type="text/css" >
+  <link href="../css/page.css" rel="stylesheet" type="text/css" >
+  <title>VOAT | Library</title>
+</head>
+<body>
+  <div id="library-entries"></div>
+  <div id="library-entry-template" class="library-entry hidden">
+    <h2 class="title"></h2>
+    <h3 class="creator"></h3>
+    <style class="editor-styles"></style>
+    <style class="color-styles"></style>
+    <a class="editor-link">
+    <div class="library-entry-grid"></div>
+    </a>
+  </div>
+  <div id="grid-templates" class="hidden">
+    <div id="row-template" class="row"></div>
+    <div id="cell-template" class="cell">
+      <div class="c center"></div>
+      <div class="a corner top-corner left-corner"></div>
+      <div class="b corner bottom-corner right-corner"></div>
+    </div>
+    <div id="cell-template-rotated" class="cell rotated">
+      <div class="cc center"></div>
+      <div class="aa corner top-corner right-corner"></div>
+      <div class="bb corner bottom-corner left-corner"></div>
+    </div>
+  </div>
+ <script>$(document).ready(function () {
+      let cursorStr = "";
+      let fetching = false;
+      const appendToLibraryFromResponse = function (data) {
+        fetching = false;
+        const parsed = JSON.parse(data);
+        cursorStr = parsed.CursorStr;
+        const patterns = parsed.Patterns;
+        for (let i in patterns) {
+          const creator = patterns[i].Creator;
+          const template = patterns[i].Template;
+          const title = patterns[i].Title;
+          const statePayload = JSON.parse(data).Patterns[i].Payload;
+          
+          const id = "le" + Math.round(Math.random() * 1000000);
+          const element = $("#library-entry-template").clone().attr("id", id).removeClass("hidden");
+          $(".title", element).text(title);
+          $(".creator", element).text(creator);
+          $(".editor-link", element).attr("href", "../editor?ps=" + statePayload);
+          $("#library-entries").append(element);
+          
+          const scope = "#" + id;
+          
+          const gridController = new Grid(Random.create(), $(".library-entry-grid", element), $("#grid-templates"));
+          gridController.fillToActualDimensions = true;
+          const state = new State(
+            StatefulProperty.ofController("Grid", gridController),
+            StatefulProperty.ofController("Colors", new ColorPallete(scope, $(".color-styles", element))),
+            StatefulProperty.ofController("Editor", new ScopedStyleController(scope, $(".editor-styles", element))),
+          );
+          
+          state.loadFromStringState(statePayload);
+        }
+      }
+ 
+    
+      $.get("https://us-west3-voat-app-0.cloudfunctions.net/voat-app-list", appendToLibraryFromResponse);
+      
+      
+      
+      $(window).scroll(function() {
+        if ($(window).height() - window.innerHeight - $(window).scrollTop() < 500) {
+          if (!fetching) {
+            fetching = true;
+            $.get("https://us-west3-voat-app-0.cloudfunctions.net/voat-app-list", 
+            JSON.stringify({
+              "CursorStr": cursorStr
+            }), appendToLibraryFromResponse);
+          }
+        }
+      });
+      
+    });</script>
+</body>
+</html>

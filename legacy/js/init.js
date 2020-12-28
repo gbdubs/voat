@@ -65,7 +65,8 @@ $(function() {
   function createGrid() {
   	var grid = $(".grid");
     var rowTemplate = $(".row.hidden");
-    var cellTemplate = $(".cell.hidden");
+    var cellTemplate = $(".cell.hidden.c");
+    var cellTemplate = $(".cell.hidden.f");
 
     $(grid).empty().css("top", heightOffset).css("left", widthOffset);
     ELEMS.empty();

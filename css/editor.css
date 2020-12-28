@@ -1,0 +1,231 @@
+.example {
+  margin: 5rem;
+  position: relative;
+}
+
+.example .label {
+  position: absolute;
+  top: Calc(50% - .5rem);
+  width: 100%;
+  text-align: center;
+}
+
+.example .cell {
+    display: block;
+}
+
+.example .cell.shaddow {
+  overflow: visible;
+  opacity: .30;
+  position: absolute;
+}
+
+.editor-wrapper .a {
+  background: rgba(255, 0, 0, 1);
+}
+
+.editor-wrapper .b {
+  background: rgba(255, 152, 0, 1);
+}
+
+.editor-wrapper .c {
+  background: rgba(255, 255, 0, 1);
+}
+
+.editor-wrapper .aa {
+  background: rgba(0, 0, 255, 1);
+}
+
+.editor-wrapper .bb {
+  background: rgba(255, 0, 255, 1);
+}
+
+.editor-wrapper .cc {
+  background: rgba(0, 128, 0, 1);
+}
+
+.gui {
+    height: Calc(100vh - 25rem);
+    overflow-y: scroll;
+}
+
+.gui-class {
+  border: 1px solid gray;
+  padding: .25rem;
+  margin: .5rem 0;
+  border-radius: .5rem;
+}
+
+.gui-class-title {
+    padding: .25rem;
+    margin: -.25rem;
+    border-radius: .5rem;
+}
+
+.gui-style {
+  border-bottom: 1px lightgray solid;
+  padding: .25rem 0;
+}
+
+.gui-style.disabled {
+  opacity: .50;
+}
+
+.gui-style > input {
+  margin: 0 .25rem;
+}
+
+.gui-setting-delete-btn {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  font-size: .85rem;
+  border-radius: 50%;
+  text-align: center;
+  float: right;
+}
+
+.gui-class-hidden-style {
+  border-radius: .5rem;
+  margin: .25rem;
+  padding: .25rem;
+  display: inline-block;
+}
+
+.gui-setting-delete-btn,
+.gui-class-hidden-style {
+  border: 1px solid; 
+  color: gray;
+}
+
+.gui-style-range-box {
+ width: 4rem;
+}
+    
+.gui-class.collapsed .gui-class-hidden-styles, 
+.gui-class.collapsed .gui-style {
+  display: none;
+}
+
+.gui-setting-delete-btn,
+.gui-class-hidden-style,
+.gui-class > h3 {
+  cursor: pointer;
+}
+
+.gui-setting-delete-btn:hover,
+.gui-class-hidden-style:hover,
+.gui-class > h3:hover {
+  color: black;
+  background: lightgray;
+}
+
+/* To Categorize */
+
+/* Increases selectivity to override editor default */
+span.chip {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 50%;
+    margin: .125rem .25rem;
+    float: right;
+}
+
+.examples {
+    overflow: hidden;
+}
+
+.editor-wrapper {
+    width: 25rem;
+    height: Calc(100vh - 3rem);
+    border: .5rem solid white;
+    position: fixed;
+    z-index: 1;
+    top: 1rem;
+    left: 1rem;
+    background: #FAFAFA;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 1rem;
+    border-right: 0;
+    padding-right: .5rem;
+}
+
+.example {
+  display: inline-block;
+  width: Calc(50% - 1rem);
+  margin: 0;
+  height: 12rem;
+  position: relative;
+}
+
+.example .cell {
+    position: absolute;
+    top: Calc(50% - 2rem);
+    left: Calc(50% - 2rem);
+}
+
+.grid {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.editor-header-logo {
+    margin: 0;
+    display: inline-block;
+}
+
+.editor-header-logo a {
+ color: black;
+  text-decoration: none;
+}
+
+.editor-header {
+    border-bottom: 1px solid lightgray;
+}
+
+.editor-controls {
+    text-align: center;
+}
+
+.editor-header-button, .editor-control-button {
+    display: inline-block;
+    border: 1px solid;
+    border-radius: .25rem;
+    padding: .25rem .5rem;
+    font-size: 1.25rem;
+    margin: .125rem;
+    cursor: pointer;
+    color: gray;
+}
+
+.editor-header-button {
+  float: right;
+}
+
+.editor-header-button:hover, .editor-control-button:hover {
+    background: lightgray;
+    color: black;
+}
+
+.editor-header {
+    padding-bottom: .25rem;
+}
+
+.gui-class-hidden-styles {
+    padding-top: .25rem;
+}
+
+.grid.show-borders .corner,
+.grid.show-borders .cell,
+.grid.show-borders .background {
+  border: 1px solid black;
+}
+
+#editor-wrapper.minimized {
+    height: 2.25rem;
+    overflow: hidden;
+    width: 21rem;
+}

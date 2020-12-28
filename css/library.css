@@ -1,0 +1,44 @@
+.library-entry {
+    text-align: left;
+    height: 25rem;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    margin: 1rem;
+    overflow: hidden;
+    width: Calc(100vw - 3rem);
+    display: inline-block;
+    max-width: 25rem;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.title {
+    margin: 0;
+    display: inline-block;
+    background: #FFFD;
+    position: absolute;
+    z-index: 1;
+    padding: .25rem .5rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.creator {
+    top: 2.25rem;
+    margin: 0;
+    display: inline-block;
+    background: #FFFD;
+    position: absolute;
+    z-index: 1;
+    padding: 0 .5rem .25rem .5rem;
+    color: #444;
+    border-bottom-right-radius: 1rem;
+}
+
+.library-entry-grid {
+    height: 100%;
+    max-width: 100%;
+}
+
+#library-entries {
+    text-align: center;
+}
