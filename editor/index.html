@@ -22,6 +22,7 @@
   <script src="../js/show_borders.js"></script>
   <script src="../js/state.js"></script>
   <script src="../js/style_editor_controller.js"></script>
+  <script src="../js/publish_modal.js"></script>
   <script src="../js/random.js"></script>
   <link href="../css/editor.css" rel="stylesheet" type="text/css" >
   <link href="../css/page.css" rel="stylesheet" type="text/css" >
@@ -84,13 +85,23 @@
     <div id="gui-wrapper"></div>
    </div>
   <div id="save-modal">
-    <h2>Publish to Public Library</h2>
-    <label for="title">Name Your Pattern</label>
-    <input type="text" name="title" placeholder="How does it make you feel?"/>
-    <label for="creator">What's your name?</label>
-    <input type="text" name="creator" placeholder="Feel free to use a pseudoname!"/>
-    <div id="save-modal-cancel-btn" class="save-modal-btn">Cancel</div>
-    <div id="save-modal-save-btn" class="save-modal-btn">Publish + Save</div>
+    <div class="save-modal-internal-wrapper">
+      <h2>Publish to Public Library</h2>
+      <p>Share your creation with the world! In publishing, your creation will be added to the <a href="../library">library</a>, where anyone can see it and build new versions of it.</p>
+      <div>
+        <label for="title">Title Your Pattern</label>
+        <input type="text" name="title" placeholder="What does it make you feel?"/>
+      </div>
+      <div>
+        <label for="creator">Creator's Name</label>
+        <input type="text" name="creator" placeholder="Feel free to use a pseudonym!"/>
+      </div>
+      <div>
+        <div id="save-modal-cancel-btn" class="save-modal-btn">Cancel</div>
+        <div id="save-modal-save-btn" class="save-modal-btn">Publish + Save</div>
+      </div>
+      <div id="save-modal-saving"></div>
+    </div>
   </div>
   <script>$(document).ready(function () {
       const gridSelector = "#grid";
@@ -144,14 +155,9 @@
         save();
       });
       
-      
+      const publishModal = new PublishModal(state);
       $("#editor-menu-button-share").click(function() {
-        $.post("https://us-west4-voat-app-0.cloudfunctions.net/voat-app-add", JSON.stringify({
-            "Title": "A New One",
-            "Creator": "Grady",
-            "Template": 0,
-            "Payload": state.getStringState(),
-        }));
+        publishModal.show();
       });
       
       $("#editor-menu-button-minimize").click(function() {

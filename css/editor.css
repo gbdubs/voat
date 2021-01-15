@@ -122,6 +122,36 @@
 
 /* To Categorize */
 
+#save-modal {
+    z-index: 1;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(200, 200, 200, .75);
+    top: 0;
+}
+
+
+.save-modal-internal-wrapper {
+    background: white;
+    width: 26rem;
+    padding: 0 1rem 1rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid gray;
+    margin: Calc(50vh - 10rem) Calc(50vw - 13rem);
+}
+
+#save-modal label {
+    width: 10.5rem;
+    display: inline-block;
+}
+
+#save-modal input {
+    width: 15rem;
+    padding: .25rem;
+    margin: .5rem 0;
+}
+
 /* Increases selectivity to override editor default */
 span.chip {
     width: 1rem;
@@ -190,7 +220,11 @@ span.chip {
     text-align: center;
 }
 
-.editor-header-button, .editor-control-button {
+.editor-header-button {
+  float: right;
+}
+
+.editor-header-button, .editor-control-button, .save-modal-btn {
     display: inline-block;
     border: 1px solid;
     border-radius: .25rem;
@@ -201,11 +235,7 @@ span.chip {
     color: gray;
 }
 
-.editor-header-button {
-  float: right;
-}
-
-.editor-header-button:hover, .editor-control-button:hover {
+.editor-header-button:hover, .editor-control-button:hover, .save-modal-btn:hover {
     background: lightgray;
     color: black;
 }

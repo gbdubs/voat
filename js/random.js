@@ -25,7 +25,7 @@ function randomDouble(seedString) {
   const seed = xmur3(seedString);
   return sfc32(seed(), seed(), seed(), seed());
 }
-// Many thanks to bryc, who wrote this code in
+// Many thanks to Stack Overflow User bryc, who wrote this code in
 // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
 
 class Random {
