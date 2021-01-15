@@ -56,7 +56,7 @@
   width: 2rem;
   height: 2rem;
 }
-.rejoinder .cell.rot > div:last-of-type {
+.rejoinder .f > div:last-of-type {
   right: auto;
   left: 0em;
   top: 0rem;
@@ -71,7 +71,7 @@
   height: 2em;
   position: absolute;
 }
-.rejoinder .cell.rot > div:first-of-type {
+.rejoinder .f > div:first-of-type {
   left: auto;
   right: -2em;
 }
@@ -110,12 +110,12 @@
   height: 2rem;
   width: 6rem;
 }
-.sour .cell.rot > div:first-of-type {
+.sour .f > div:first-of-type {
   left: auto;
   right: -3em;
   width: 6rem;
 }
-.sour .cell.rot > div:last-of-type {
+.sour .f > div:last-of-type {
   right: auto;
   left: -1em;
   width: 2rem;
