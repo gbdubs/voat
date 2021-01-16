@@ -1,15 +1,41 @@
 .library-entry {
     text-align: left;
-    height: 25rem;
-    border: 1px solid gray;
-    border-radius: 1rem;
-    margin: 1rem;
+    border-radius: .5rem;
+    margin: .75rem;
     overflow: hidden;
-    width: Calc(100vw - 3rem);
     display: inline-block;
     max-width: 25rem;
     position: relative;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: Calc(25vw - 2.5rem);
+    height: Calc(25vw - 2.5rem);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+  .library-entry {
+    width: Calc(33.33vw - 2.5rem);
+    height: Calc(33.33vw - 2.5rem);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .library-entry {
+    width: Calc(50vw - 2.5rem);
+    height: Calc(50vw - 2.5rem);
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .library-entry {
+      width: Calc(100vw - 2rem);
+      height: Calc(100vw - 2rem);
+      margin: .5rem 1rem;
+  }
+}
+
+.library-entry:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
 }
 
 .title {
@@ -37,6 +63,10 @@
 .library-entry-grid {
     height: 100%;
     max-width: 100%;
+}
+
+.library-header {
+    padding: 2rem;
 }
 
 #library-entries {
