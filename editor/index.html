@@ -25,6 +25,7 @@
   <script src="../js/publish_modal.js"></script>
   <script src="../js/random.js"></script>
   <link href="../css/editor.css" rel="stylesheet" type="text/css" >
+  <link href="../css/license.css" rel="stylesheet" type="text/css" >
   <link href="../css/page.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
@@ -103,6 +104,12 @@
       <div id="save-modal-saving"></div>
     </div>
   </div>
+  <div class="license">
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a>
+    <div class="license-tooltip">
+      This work is licensed under a Creative Commons Attribution 4.0 International License.
+    </div>
+  </div>
   <script>$(document).ready(function () {
       const gridSelector = "#grid";
       const grid = $("#grid");
@@ -154,16 +161,16 @@
         showBordersController.toggle();
         save();
       });
+      $("#editor-menu-button-minimize").click(function() {
+        editorVisibilityController.toggle();
+        save();
+      });
       
       const publishModal = new PublishModal(state);
       $("#editor-menu-button-share").click(function() {
         publishModal.show();
       });
       
-      $("#editor-menu-button-minimize").click(function() {
-        editorVisibilityController.toggle();
-        save();
-      });
       $("#editor-menu-button-download").click(function() {
         html2canvas(document.querySelector(".grid")).then(canvas => {
           const downloadLink = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
